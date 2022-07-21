@@ -20,7 +20,7 @@ class LaravelSettings
     public function get(string $key, $default = null)
     {
         if ($this->isCachable() && $value = cache()->get($this->cacheKey($key))) {
-             return $value;
+            return $value;
         }
 
         $value = optional($this->db->where('key', $key)->first())->value;
