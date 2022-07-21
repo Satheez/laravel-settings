@@ -4,7 +4,7 @@ namespace Satheez\LaravelSettings\Helpers;
 
 use Satheez\LaravelSettings\Helpers\Contract\Serializable;
 
-class Tansform implements Serializable
+class Transform implements Serializable
 {
     /**
      * @param  mixed  $value

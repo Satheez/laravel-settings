@@ -2,6 +2,7 @@
 
 namespace Satheez\LaravelSettings;
 
+use Carbon\Carbon;
 use Satheez\LaravelSettings\Helpers\Crypt;
 use Satheez\LaravelSettings\Helpers\Transform;
 
@@ -28,7 +29,8 @@ class LaravelSettings
             return $default;
         }
 
-        $originalValue = Transform::unserialize($this->isCryptable() ? Crypt::decrypt($value) : $value);
+        $value = Transform::unserialize($value);
+        $originalValue = $this->isCryptable() ? Crypt::decrypt($value) : $value;
         if ($this->isCachable()) {
             cache()->set($this->cacheKey($key), $originalValue, config('cache.ttl'));
         }
@@ -48,7 +50,10 @@ class LaravelSettings
         }
 
         $this->db->updateOrInsert(['key' => $key],
-            ['value' => Transform::unserialize($this->isCryptable() ? Crypt::encrypt($value) : $value)]
+            [
+                'updated_at' => Carbon::now(),
+                'value' => Transform::serialize($this->isCryptable() ? Crypt::encrypt($value) : $value),
+            ]
         );
     }
 
@@ -62,7 +67,7 @@ class LaravelSettings
      * @param  string|array  $parameter
      * @return mixed
      */
-    private function settings(string|array $parameter): mixed
+    public function settings(string|array $parameter): mixed
     {
         if (is_string($parameter)) {
             return $this->get($parameter);

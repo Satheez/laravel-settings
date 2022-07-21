@@ -1,22 +1,14 @@
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
 
-# This is my package laravel-settings
+# Laravel Settings
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/satheez/laravel-settings.svg?style=flat-square)](https://packagist.org/packages/satheez/laravel-settings)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/satheez/laravel-settings/run-tests?label=tests)](https://github.com/satheez/laravel-settings/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/satheez/laravel-settings/Check%20&%20fix%20styling?label=code%20style)](https://github.com/satheez/laravel-settings/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/satheez/laravel-settings.svg?style=flat-square)](https://packagist.org/packages/satheez/laravel-settings)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-settings.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-settings)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This package is used get & set data by using dedicated database table
 
 ## Installation
 
@@ -32,11 +24,27 @@ You can publish and run the migrations with:
 php artisan vendor:publish --tag="laravel-settings-migrations"
 php artisan migrate
 ```
+
 ## Usage
 
+### Set settings data
+
 ```php
-$laravelSettings = new Satheez\LaravelSettings();
-echo $laravelSettings->echoPhrase('Hello, Satheez!');
+// Method 1
+settings(['foo' => 'bar']);
+
+// Method 2
+settings_set('foo', 'bar');
+```
+
+### Get settings data
+
+```php
+// Method 1
+settings('foo'); // output: bar
+
+// Method 2
+settings_get('foo'); // output: bar
 ```
 
 ## Testing
@@ -44,18 +52,6 @@ echo $laravelSettings->echoPhrase('Hello, Satheez!');
 ```bash
 composer test
 ```
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](https://github.com/Satheez/.github/blob/main/CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
