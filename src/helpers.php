@@ -1,15 +1,5 @@
 <?php
-
-
-//if (!function_exists('settings')) {
-//    function settings()
-//    {
-//        return app('laravel-settings');
-//    }
-//}
-
-
-if (! function_exists('settings2')) {
+if (! function_exists('settings')) {
 
     /**
      * Get/set settings data
@@ -21,11 +11,8 @@ if (! function_exists('settings2')) {
      * @param  string|array  $parameter
      * @return mixed
      */
-    function settings2(string|array $parameter): mixed
+    function settings(string|array $parameter): mixed
     {
-        dd(config('laravel-settings'));
-        dd(app()->settings);
-        die('hit');
         $db = \Illuminate\Support\Facades\DB::table('settings');
         if (is_string($parameter)) {
             $key = $parameter;
