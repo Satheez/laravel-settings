@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('settings')) {
+if (! function_exists('settings')) {
 
     /**
      * Get/set settings data
@@ -9,7 +9,7 @@ if (!function_exists('settings')) {
      * Ex. Get -> settings('service.refresh_token')
      *    Post -> settings(['service.refresh_token' => 'xxxyyyzzz'])
      *
-     * @param string|array $parameter
+     * @param  string|array  $parameter
      * @return mixed
      */
     function settings(string|array $parameter): mixed
@@ -17,6 +17,7 @@ if (!function_exists('settings')) {
         $db = \Illuminate\Support\Facades\DB::table('settings');
         if (is_string($parameter)) {
             $key = $parameter;
+
             return cache()
                 ->remember(
                     "settings|table|{$key}",
@@ -29,8 +30,8 @@ if (!function_exists('settings')) {
 
         foreach ($parameter as $key => $value) {
             $db->updateOrInsert(
-                ['key' => $key,],
-                ['value' => $value,]
+                ['key' => $key],
+                ['value' => $value]
             );
 
             /**
@@ -48,9 +49,9 @@ if (!function_exists('settings')) {
     }
 }
 
-if (!function_exists('settings_get')) {
+if (! function_exists('settings_get')) {
     /**
-     * @param string $key
+     * @param  string  $key
      * @param $default
      * @return mixed
      */
@@ -60,14 +61,14 @@ if (!function_exists('settings_get')) {
     }
 }
 
-if (!function_exists('settings_set')) {
+if (! function_exists('settings_set')) {
     /**
-     * @param string $key
+     * @param  string  $key
      * @param $value
      * @return void
      */
     function settings_set(string $key, $value)
     {
-        settings([$key => $value,]);
+        settings([$key => $value]);
     }
 }

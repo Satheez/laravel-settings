@@ -2,9 +2,9 @@
 
 namespace Satheez\LaravelSettings;
 
+use Satheez\LaravelSettings\Commands\LaravelSettingsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Satheez\LaravelSettings\Commands\LaravelSettingsCommand;
 
 class LaravelSettingsServiceProvider extends PackageServiceProvider
 {
@@ -18,7 +18,7 @@ class LaravelSettingsServiceProvider extends PackageServiceProvider
         $package
             ->name('settings')
             ->hasMigration('create_settings_table');
-            // ->hasConfigFile()
+        // ->hasConfigFile()
             // ->hasViews()
             // ->hasCommand(LaravelSettingsCommand::class);
     }
