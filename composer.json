@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "satheez/laravel-settings",
+    "description": "This is my package laravel-settings",
     "keywords": [
-        ":vendor_name",
+        "Satheez",
         "laravel",
-        ":package_slug"
+        "laravel-settings"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/satheez/laravel-settings",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Satheez",
+            "email": "isatheez@gmail.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,16 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
-        }
+            "Satheez\\LaravelSettings\\": "src",
+            "Satheez\\LaravelSettings\\Database\\Factories\\": "database/factories"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Satheez\\LaravelSettings\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -51,15 +54,19 @@
         "format": "vendor/bin/pint"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Satheez\\LaravelSettings\\LaravelSettingsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelSettings": "Satheez\\LaravelSettings\\Facades\\LaravelSettings"
             }
         }
     },
