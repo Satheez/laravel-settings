@@ -20,7 +20,7 @@ class LaravelSettings
     public function get(string $key, $default = null)
     {
         if ($this->isCachable() && $value = cache()->get($this->cacheKey($key))) {
-            return $value;
+             return $value;
         }
 
         $value = optional($this->db->where('key', $key)->first())->value;
@@ -28,7 +28,8 @@ class LaravelSettings
             return $default;
         }
 
-        $originalValue = Transform::unserialize($this->isCryptable() ? Crypt::decrypt($value) : $value);
+        $value = Transform::unserialize($value);
+        $originalValue = $this->isCryptable() ? Crypt::decrypt($value) : $value;
         if ($this->isCachable()) {
             cache()->set($this->cacheKey($key), $originalValue, config('cache.ttl'));
         }
@@ -48,7 +49,7 @@ class LaravelSettings
         }
 
         $this->db->updateOrInsert(['key' => $key],
-            ['value' => Transform::unserialize($this->isCryptable() ? Crypt::encrypt($value) : $value)]
+            ['value' => Transform::serialize($this->isCryptable() ? Crypt::encrypt($value) : $value)]
         );
     }
 
@@ -94,6 +95,7 @@ class LaravelSettings
 
     /**
      * Is cachable data
+     *
      * @return bool
      */
     private function isCachable(): bool
