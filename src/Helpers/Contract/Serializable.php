@@ -5,7 +5,7 @@ namespace Satheez\LaravelSettings\Helpers\Contract;
 interface Serializable
 {
     /**
-     * @param mixed $value
+     * @param  mixed  $value
      * @return string
      */
     public static function serialize(mixed $value): string;

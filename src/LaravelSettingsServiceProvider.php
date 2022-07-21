@@ -4,9 +4,6 @@ namespace Satheez\LaravelSettings;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Illuminate\Foundation\Application as LaravelApplication;
-use Illuminate\Support\ServiceProvider;
-
 
 class LaravelSettingsServiceProvider extends PackageServiceProvider
 {
@@ -24,7 +21,6 @@ class LaravelSettingsServiceProvider extends PackageServiceProvider
         // ->hasViews()
         // ->hasCommand(LaravelSettingsCommand::class);
     }
-
 
     public function packageRegistered()
     {
