@@ -3,7 +3,7 @@
 namespace Satheez\LaravelSettings;
 
 use Carbon\Carbon;
-use \Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 use Satheez\LaravelSettings\Helpers\Crypt;
 use Satheez\LaravelSettings\Helpers\Transform;
 
@@ -45,7 +45,7 @@ class LaravelSettings
             cache()->set($this->cacheKey($key), $value, config('cache.ttl'));
         }
 
-       DB::table('settings')->updateOrInsert(['key' => $key],
+        DB::table('settings')->updateOrInsert(['key' => $key],
             [
                 'updated_at' => Carbon::now(),
                 'value' => Transform::serialize($this->isCryptable() ? Crypt::encrypt($value) : $value),
