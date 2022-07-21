@@ -13,7 +13,7 @@ class LaravelSettings
     }
 
     /**
-     * @param string $key
+     * @param  string  $key
      * @param $default
      * @return mixed
      */
@@ -37,8 +37,8 @@ class LaravelSettings
     }
 
     /**
-     * @param string $key
-     * @param mixed $value
+     * @param  string  $key
+     * @param  mixed  $value
      * @return void
      */
     public function set(string $key, mixed $value)
@@ -59,7 +59,7 @@ class LaravelSettings
      * Ex. Get -> settings('service.refresh_token')
      *    Post -> settings(['service.refresh_token' => 'xxxyyyzzz'])
      *
-     * @param string|array $parameter
+     * @param  string|array  $parameter
      * @return mixed
      */
     private function settings(string|array $parameter): mixed
@@ -76,7 +76,7 @@ class LaravelSettings
     }
 
     /**
-     * @param string $key
+     * @param  string  $key
      * @return string
      */
     private function cacheKey(string $key): string
@@ -94,6 +94,7 @@ class LaravelSettings
 
     /**
      * Is cachable data
+     *
      * @return bool
      */
     private function isCachable(): bool

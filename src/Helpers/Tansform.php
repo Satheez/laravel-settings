@@ -7,7 +7,7 @@ use Satheez\LaravelSettings\Helpers\Contract\Serializable;
 class Tansform implements Serializable
 {
     /**
-     * @param mixed $value
+     * @param  mixed  $value
      * @return string
      */
     public static function serialize(mixed $value): string

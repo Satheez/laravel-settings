@@ -2,23 +2,23 @@
 
 namespace Satheez\LaravelSettings\Helpers;
 
-use Satheez\LaravelSettings\Helpers\Contract\Cryptable;
 use Illuminate\Support\Facades\Crypt as LaravelCrypt;
+use Satheez\LaravelSettings\Helpers\Contract\Cryptable;
 
 class Crypt implements Cryptable
 {
-
     /**
-     * @param mixed $value
+     * @param  mixed  $value
      * @return string
      */
     public static function encrypt(string $value): string
     {
-       return LaravelCrypt::encryptString($value);
+        return LaravelCrypt::encryptString($value);
     }
 
     /**
      * Decrypt given data
+     *
      * @return string
      */
     public static function decrypt(string $encrptedValue): string
