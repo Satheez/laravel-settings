@@ -2,6 +2,7 @@
 
 namespace Satheez\LaravelSettings;
 
+use Carbon\Carbon;
 use Satheez\LaravelSettings\Helpers\Crypt;
 use Satheez\LaravelSettings\Helpers\Transform;
 
@@ -13,7 +14,7 @@ class LaravelSettings
     }
 
     /**
-     * @param  string  $key
+     * @param string $key
      * @param $default
      * @return mixed
      */
@@ -38,8 +39,8 @@ class LaravelSettings
     }
 
     /**
-     * @param  string  $key
-     * @param  mixed  $value
+     * @param string $key
+     * @param mixed $value
      * @return void
      */
     public function set(string $key, mixed $value)
@@ -49,7 +50,10 @@ class LaravelSettings
         }
 
         $this->db->updateOrInsert(['key' => $key],
-            ['value' => Transform::serialize($this->isCryptable() ? Crypt::encrypt($value) : $value)]
+            [
+                'updated_at' => Carbon::now(),
+                'value' => Transform::serialize($this->isCryptable() ? Crypt::encrypt($value) : $value)
+            ]
         );
     }
 
@@ -60,10 +64,10 @@ class LaravelSettings
      * Ex. Get -> settings('service.refresh_token')
      *    Post -> settings(['service.refresh_token' => 'xxxyyyzzz'])
      *
-     * @param  string|array  $parameter
+     * @param string|array $parameter
      * @return mixed
      */
-    private function settings(string|array $parameter): mixed
+    public function settings(string|array $parameter): mixed
     {
         if (is_string($parameter)) {
             return $this->get($parameter);
@@ -77,7 +81,7 @@ class LaravelSettings
     }
 
     /**
-     * @param  string  $key
+     * @param string $key
      * @return string
      */
     private function cacheKey(string $key): string
