@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('settings')) {
+if (!function_exists('settings')) {
 
     /**
      * Get/set settings data
@@ -9,7 +9,7 @@ if (! function_exists('settings')) {
      * Ex. Get -> settings('service.refresh_token')
      *    Post -> settings(['service.refresh_token' => 'xxxyyyzzz'])
      *
-     * @param  string|array  $parameter
+     * @param string|array $parameter
      * @return mixed
      */
     function settings(string|array $parameter): mixed
@@ -18,26 +18,26 @@ if (! function_exists('settings')) {
     }
 }
 
-if (! function_exists('settings_get')) {
+if (!function_exists('settings_get')) {
     /**
-     * @param  string  $key
+     * @param string $key
      * @param $default
      * @return mixed
      */
-    function settings_get(string $key, $default = null)
+    function settings_get(string $key, $default = null): mixed
     {
         return app()->get('settings')->get($key, $default);
     }
 }
 
-if (! function_exists('settings_set')) {
+if (!function_exists('settings_set')) {
     /**
-     * @param  string  $key
+     * @param string $key
      * @param $value
      * @return void
      */
-    function settings_set(string $key, $value)
+    function settings_set(string $key, $value): void
     {
-        return app()->get('settings')->set($key, $value);
+        app()->get('settings')->set($key, $value);
     }
 }
