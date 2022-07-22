@@ -18,15 +18,13 @@ class TestCase extends Orchestra
 
     protected function getPackageProviders($app)
     {
-        return [
-            LaravelSettingsServiceProvider::class,
-        ];
+        return [LaravelSettingsServiceProvider::class,];
     }
 
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
-        $migration = include __DIR__.'/../database/migrations/create_settings_table.php.stub';
+        $migration = include __DIR__ . '/../database/migrations/create_settings_table.php.stub';
         $migration->up();
     }
 }

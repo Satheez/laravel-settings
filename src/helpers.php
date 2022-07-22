@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('settings')) {
+if (!function_exists('settings')) {
 
     /**
      * Get/set settings data
@@ -9,49 +9,35 @@ if (! function_exists('settings')) {
      * Ex. Get -> settings('service.refresh_token')
      *    Post -> settings(['service.refresh_token' => 'xxxyyyzzz'])
      *
-     * @param  string|array  $parameter
+     * @param string|array $parameter
      * @return mixed
      */
     function settings(string|array $parameter): mixed
     {
-        try {
-            return app()->get('settings')->settings($parameter);
-        } catch (\Psr\Container\NotFoundExceptionInterface|\Psr\Container\ContainerExceptionInterface $e) {
-            return null;
-        }
+        return app()->get('settings')->settings($parameter);
     }
 }
 
-if (! function_exists('settings_get')) {
+if (!function_exists('settings_get')) {
     /**
-<<<<<<< Updated upstream
-     * @param  string  $key
-     * @param $default
-     * @param  string  $key
-     * @param  null  $default
+     * @param string $key
+     * @param mixed|null $default
      * @return mixed
      */
     function settings_get(string $key, $default = null): mixed
     {
-        try {
-            return app()->get('settings')->get($key, $default);
-        } catch (\Psr\Container\NotFoundExceptionInterface|\Psr\Container\ContainerExceptionInterface $e) {
-            return $default;
-        }
+        return app()->get('settings')->get($key, $default);
     }
 }
 
-if (! function_exists('settings_set')) {
+if (!function_exists('settings_set')) {
     /**
-     * @param  string  $key
+     * @param string $key
      * @param $value
      * @return void
      */
     function settings_set(string $key, $value): void
     {
-        try {
-            app()->get('settings')->set($key, $value);
-        } catch (\Psr\Container\NotFoundExceptionInterface|\Psr\Container\ContainerExceptionInterface $e) {
-        }
+        app()->get('settings')->set($key, $value);
     }
 }

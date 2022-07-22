@@ -16,13 +16,8 @@ class LaravelSettingsServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-settings')
+            ->name('settings')
             ->hasMigration('create_settings_table')
-            ->hasConfigFile();
-    }
-
-    public function packageRegistered()
-    {
-        $this->app->bind(LaravelSettings::class);
+            ->hasConfigFile('laravel-settings');
     }
 }
