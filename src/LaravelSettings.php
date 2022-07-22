@@ -35,8 +35,8 @@ class LaravelSettings
     }
 
     /**
-     * @param string $key
-     * @param mixed $value
+     * @param  string  $key
+     * @param  mixed  $value
      * @return void
      */
     public function set(string $key, mixed $value)

@@ -13,7 +13,7 @@ interface Cryptable
     /**
      * Decrypt given data
      *
-     * @param string $encryptedValue
+     * @param  string  $encryptedValue
      * @return string
      */
     public static function decrypt(string $encryptedValue): string;
