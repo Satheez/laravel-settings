@@ -21,7 +21,7 @@ composer require satheez/laravel-settings
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-settings-migrations"
+php artisan vendor:publish --provider="Satheez\LaravelSettings\LaravelSettingsServiceProvider"
 php artisan migrate
 ```
 

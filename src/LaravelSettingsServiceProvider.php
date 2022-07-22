@@ -2,6 +2,7 @@
 
 namespace Satheez\LaravelSettings;
 
+use Carbon\Carbon;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -15,22 +16,13 @@ class LaravelSettingsServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('settings')
+            ->name('laravel-settings')
             ->hasMigration('create_settings_table')
             ->hasConfigFile();
-        // ->hasViews()
-        // ->hasCommand(LaravelSettingsCommand::class);
     }
 
     public function packageRegistered()
     {
         $this->app->bind(LaravelSettings::class);
-    }
-
-    public function boot()
-    {
-        app()->bind('settings', function ($app) {
-            return new LaravelSettings();
-        });
     }
 }
