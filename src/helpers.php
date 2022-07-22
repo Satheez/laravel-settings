@@ -14,30 +14,19 @@ if (! function_exists('settings')) {
      */
     function settings(string|array $parameter): mixed
     {
-        try {
-            return app()->get('settings')->settings($parameter);
-        } catch (\Psr\Container\NotFoundExceptionInterface|\Psr\Container\ContainerExceptionInterface $e) {
-            return null;
-        }
+        return app()->get('settings')->settings($parameter);
     }
 }
 
 if (! function_exists('settings_get')) {
     /**
-<<<<<<< Updated upstream
      * @param  string  $key
-     * @param $default
-     * @param  string  $key
-     * @param  null  $default
+     * @param  mixed|null  $default
      * @return mixed
      */
     function settings_get(string $key, $default = null): mixed
     {
-        try {
-            return app()->get('settings')->get($key, $default);
-        } catch (\Psr\Container\NotFoundExceptionInterface|\Psr\Container\ContainerExceptionInterface $e) {
-            return $default;
-        }
+        return app()->get('settings')->get($key, $default);
     }
 }
 
@@ -49,9 +38,6 @@ if (! function_exists('settings_set')) {
      */
     function settings_set(string $key, $value): void
     {
-        try {
-            app()->get('settings')->set($key, $value);
-        } catch (\Psr\Container\NotFoundExceptionInterface|\Psr\Container\ContainerExceptionInterface $e) {
-        }
+        app()->get('settings')->set($key, $value);
     }
 }

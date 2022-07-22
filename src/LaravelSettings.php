@@ -16,7 +16,7 @@ class LaravelSettings
      */
     public function get(string $key, $default = null)
     {
-        if ($this->isCachable() && $value = cache()->get($this->cacheKey($key))) {
+        if ($this->isCacheable() && $value = cache()->get($this->cacheKey($key))) {
             return $value;
         }
 
@@ -27,8 +27,8 @@ class LaravelSettings
 
         $value = Transform::unserialize($value);
         $originalValue = $this->isCryptable() ? Crypt::decrypt($value) : $value;
-        if ($this->isCachable()) {
-            cache()->set($this->cacheKey($key), $originalValue, config('cache.ttl'));
+        if ($this->isCacheable()) {
+            cache()->set($this->cacheKey($key), $originalValue, config('laravel-settings.cache.ttl'));
         }
 
         return $originalValue;
@@ -41,8 +41,8 @@ class LaravelSettings
      */
     public function set(string $key, mixed $value)
     {
-        if ($this->isCachable()) {
-            cache()->set($this->cacheKey($key), $value, config('cache.ttl'));
+        if ($this->isCacheable()) {
+            cache()->set($this->cacheKey($key), $value, config('laravel-settings.cache.ttl'));
         }
 
         DB::table('settings')->updateOrInsert(['key' => $key],
@@ -82,7 +82,7 @@ class LaravelSettings
      */
     private function cacheKey(string $key): string
     {
-        return "settings|table|{$key}";
+        return "laravel-settings|table|{$key}";
     }
 
     /**
@@ -90,15 +90,15 @@ class LaravelSettings
      */
     private function isCryptable(): bool
     {
-        return config('settings.cache.enabled');
+        return config('laravel-settings.cache.enabled');
     }
 
     /**
-     * Is cachable data
+     * Is cacheable data
      *
      * @return bool
      */
-    private function isCachable(): bool
+    private function isCacheable(): bool
     {
         return config('settings.cache.enabled');
     }

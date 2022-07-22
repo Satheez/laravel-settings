@@ -18,9 +18,7 @@ class TestCase extends Orchestra
 
     protected function getPackageProviders($app)
     {
-        return [
-            LaravelSettingsServiceProvider::class,
-        ];
+        return [LaravelSettingsServiceProvider::class];
     }
 
     public function getEnvironmentSetUp($app)
