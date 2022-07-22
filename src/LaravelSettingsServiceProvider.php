@@ -2,7 +2,6 @@
 
 namespace Satheez\LaravelSettings;
 
-use Carbon\Carbon;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
