@@ -11,7 +11,8 @@ interface Serializable
     public static function serialize(mixed $value): string;
 
     /**
-     * @return mixed
+     * @param string $serializedValue
+     * @return string
      */
-    public static function unserialize(string $serializedValue): mixed;
+    public static function unserialize(string $serializedValue): string;
 }

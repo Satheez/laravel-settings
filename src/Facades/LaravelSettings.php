@@ -11,6 +11,6 @@ class LaravelSettings extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-settings';
+        return 'settings';
     }
 }
