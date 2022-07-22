@@ -27,10 +27,8 @@ if (! function_exists('settings_get')) {
 <<<<<<< Updated upstream
      * @param  string  $key
      * @param $default
-=======
-     * @param string $key
-     * @param null $default
->>>>>>> Stashed changes
+     * @param  string  $key
+     * @param  null  $default
      * @return mixed
      */
     function settings_get(string $key, $default = null): mixed

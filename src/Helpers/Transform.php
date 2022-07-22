@@ -16,7 +16,7 @@ class Transform implements Serializable
     }
 
     /**
-     * @param string $serializedValue
+     * @param  string  $serializedValue
      * @return string
      */
     public static function unserialize(string $serializedValue): string
