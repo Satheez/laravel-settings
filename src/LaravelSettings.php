@@ -100,6 +100,6 @@ class LaravelSettings
      */
     private function isCacheable(): bool
     {
-        return config('settings.cache.enabled');
+        return config('laravel-settings.cache.enabled');
     }
 }
