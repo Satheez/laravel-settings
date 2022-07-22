@@ -13,16 +13,17 @@ class Crypt implements Cryptable
      */
     public static function encrypt(string $value): string
     {
-        return LaravelCrypt::encryptString($value);
+        return LaravelCrypt::encrypt($value);
     }
 
     /**
      * Decrypt given data
      *
+     * @param  string  $encryptedValue
      * @return string
      */
-    public static function decrypt(string $encrptedValue): string
+    public static function decrypt(string $encryptedValue): string
     {
-        return LaravelCrypt::decryptString($encrptedValue);
+        return LaravelCrypt::decryptString($encryptedValue);
     }
 }

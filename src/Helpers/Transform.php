@@ -16,10 +16,11 @@ class Transform implements Serializable
     }
 
     /**
-     * @return mixed
+     * @param  string  $serializedValue
+     * @return string
      */
-    public static function unserialize(string $serializedValue): mixed
+    public static function unserialize(string $serializedValue): string
     {
-        return unserialize($serializedValue);
+        return unserialize($serializedValue, ['allowed_classes' => false]);
     }
 }
