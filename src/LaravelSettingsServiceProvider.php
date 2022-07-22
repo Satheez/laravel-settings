@@ -19,4 +19,13 @@ class LaravelSettingsServiceProvider extends PackageServiceProvider
             ->hasMigration('create_settings_table')
             ->hasConfigFile('laravel-settings');
     }
+
+    public function boot()
+    {
+        parent::boot();
+
+        app()->bind('settings', function () {
+            return new LaravelSettings();
+        });
+    }
 }
